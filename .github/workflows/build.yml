@@ -1,7 +1,7 @@
 name: BuildTest
 on:
    pull_request:
-      branches: [ "dev" ]
+      branches: [ "dev", "features/dev_actions" ]
    workflow_dispatch:
 
 # linux-<arch>, linux-musl-<arch>, osx-<arch>, win-<arch>
@@ -22,13 +22,13 @@ jobs:
         run: dotnet build -c Debug ./VoiceCraft.Client/VoiceCraft.Client.Windows/VoiceCraft.Client.Windows.csproj
 
       - name: Publish VoiceCraft.Client.Windows x64
-        run: dotnet publish -c Debug -r win-x64 --self-contained true /p:UseAppHost=true ./VoiceCraft.Client/VoiceCraft.Client.Windows/VoiceCraft.Client.Windows.csproj
+        run: dotnet publish -c Debug -r win-x64 --self-contained false ./VoiceCraft.Client/VoiceCraft.Client.Windows/VoiceCraft.Client.Windows.csproj
 
       #- name: Zip VoiceCraft.Client.Windows x64
       #  run: tar.exe -a -c -f VoiceCraft.Client.Windows-x64.zip ./VoiceCraft.Client/VoiceCraft.Client.Windows/bin/Debug/net9.0-windows/win-x64/publish/
 
       - name: Publish VoiceCraft.Client.Windows x86
-        run: dotnet publish -c Debug -r win-x86 --self-contained true /p:UseAppHost=true ./VoiceCraft.Client/VoiceCraft.Client.Windows/VoiceCraft.Client.Windows.csproj
+        run: dotnet publish -c Debug -r win-x86 --self-contained false ./VoiceCraft.Client/VoiceCraft.Client.Windows/VoiceCraft.Client.Windows.csproj
 
       #- name: Zip VoiceCraft.Client.Windows x86
       #  run: tar.exe -a -c -f VoiceCraft.Client.Windows-x86.zip ./VoiceCraft.Client/VoiceCraft.Client.Windows/bin/Debug/net9.0-windows/win-x86/publish/
@@ -36,5 +36,11 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VoiceCraft.Client.Windows
-          path: ./VoiceCraft.Client/VoiceCraft.Client.Windows/bin/Debug/net9.0-windows
+          name: VoiceCraft.Client.Windows x64
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Windows/bin/Debug/net9.0-windows/win-x64/publish/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Windows x86
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Windows/bin/Debug/net9.0-windows/win-x86/publish/
