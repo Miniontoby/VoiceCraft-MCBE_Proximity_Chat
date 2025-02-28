@@ -65,35 +65,29 @@ jobs:
       - name: Build VoiceCraft.Client.Linux
         run: dotnet build -c Debug
 
-      - name: Upload Artifact VoiceCraft.Client.Linux
+      - name: Publish VoiceCraft.Client.Linux.x64
+        run: dotnet publish -c Debug -r linux-x64 --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Linux.x64
         uses: actions/upload-artifact@v4
         with:
-          name: VoiceCraft.Client.Linux
-          path: ./bin/Debug/
+          name: VoiceCraft.Client.Linux.x64
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0/linux-x64/publish/
 
-#      - name: Publish VoiceCraft.Client.Linux.x64
-#        run: dotnet publish -c Debug -r linux-x64 --self-contained false
-#      - name: Upload Artifact VoiceCraft.Client.Linux.x64
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: VoiceCraft.Client.Linux.x64
-#          path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0-windows/linux-x64/publish/
-#
-#      - name: Publish VoiceCraft.Client.Linux.Arm
-#        run: dotnet publish -c Debug -r linux-arm --self-contained false
-#      - name: Upload Artifact VoiceCraft.Client.Linux.Arm
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: VoiceCraft.Client.Linux.Arm
-#          path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0-windows/linux-arm/publish
-#
-#      - name: Publish VoiceCraft.Client.Linux.arm64
-#        run: dotnet publish -c Debug -r linux-arm64 --self-contained false
-#      - name: Upload Artifact VoiceCraft.Client.Linux.arm64
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: VoiceCraft.Client.Linux.arm64
-#          path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0-windows/linux-arm64/publish
+      - name: Publish VoiceCraft.Client.Linux.Arm
+        run: dotnet publish -c Debug -r linux-arm --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Linux.Arm
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Linux.Arm
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0/linux-arm/publish
+
+      - name: Publish VoiceCraft.Client.Linux.arm64
+        run: dotnet publish -c Debug -r linux-arm64 --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Linux.arm64
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Linux.arm64
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0/linux-arm64/publish
 
    build-macos:
     runs-on: macos-latest
@@ -126,7 +120,7 @@ jobs:
 #        uses: actions/upload-artifact@v4
 #        with:
 #          name: VoiceCraft.Client.MacOS.x64
-#          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/net9.0-windows/osx-x64/publish/
+#          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/net9.0/osx-x64/publish/
 
 
       - name: Install VoiceCraft.Client.iOS WorkLoads
@@ -145,5 +139,5 @@ jobs:
         with:
           name: VoiceCraft.Client.iOS.x64
           path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/
-#          path: ./bin/Debug/net9.0-windows/ios-arm64/publish/
+#          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/net9.0-windows/ios-arm64/publish/
 
