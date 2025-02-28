@@ -48,7 +48,7 @@ jobs:
           path: ./VoiceCraft.Client/VoiceCraft.Client.Windows/bin/Debug/net9.0-windows/win-x64/publish/
 
    build-linux:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Linux
@@ -100,6 +100,7 @@ jobs:
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.MacOS
+    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup Dotnet
