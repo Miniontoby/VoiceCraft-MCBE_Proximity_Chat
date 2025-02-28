@@ -169,6 +169,10 @@ jobs:
           path: ./VoiceCraft.Client/VoiceCraft.Client.MacOS/bin/Debug/net9.0-macos/osx-x64/publish/
 
 
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
       - name: Install VoiceCraft.Client.iOS WorkLoads
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
         run: dotnet workload restore
