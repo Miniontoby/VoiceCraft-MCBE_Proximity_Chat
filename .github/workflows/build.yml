@@ -73,12 +73,12 @@ jobs:
           name: VoiceCraft.Client.Linux.x64
           path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0/linux-x64/publish/
 
-      - name: Publish VoiceCraft.Client.Linux.Arm
+      - name: Publish VoiceCraft.Client.Linux.arm
         run: dotnet publish -c Debug -r linux-arm --self-contained false
-      - name: Upload Artifact VoiceCraft.Client.Linux.Arm
+      - name: Upload Artifact VoiceCraft.Client.Linux.arm
         uses: actions/upload-artifact@v4
         with:
-          name: VoiceCraft.Client.Linux.Arm
+          name: VoiceCraft.Client.Linux.arm
           path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0/linux-arm/publish
 
       - name: Publish VoiceCraft.Client.Linux.arm64
