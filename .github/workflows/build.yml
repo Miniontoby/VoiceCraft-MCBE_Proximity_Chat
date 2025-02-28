@@ -89,6 +89,52 @@ jobs:
           name: VoiceCraft.Client.Linux.arm64
           path: ./VoiceCraft.Client/VoiceCraft.Client.Linux/bin/Debug/net9.0/linux-arm64/publish
 
+
+
+      - name: Install VoiceCraft.Client.Android WorkLoads
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Android
+        run: dotnet workload restore
+
+      - name: Build VoiceCraft.Client.Android
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Android
+        run: dotnet build -c Debug
+
+      - name: Publish VoiceCraft.Client.Android.arm64
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Android
+        run: dotnet publish -c Debug -r android-arm64 --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Android.arm64
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Android.arm64
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Android/bin/Debug/net9.0-android/android-arm64/publish/
+
+      - name: Publish VoiceCraft.Client.Android.arm
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Android
+        run: dotnet publish -c Debug -r android-arm --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Android.arm
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Android.arm
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Android/bin/Debug/net9.0-android/android-arm/publish/
+
+      - name: Publish VoiceCraft.Client.Android.x64
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Android
+        run: dotnet publish -c Debug -r android-x64 --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Android.x64
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Android.x64
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Android/bin/Debug/net9.0-android/android-x64/publish/
+
+      - name: Publish VoiceCraft.Client.Android.x86
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Android
+        run: dotnet publish -c Debug -r android-x86 --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.Android.x86
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceCraft.Client.Android.x86
+          path: ./VoiceCraft.Client/VoiceCraft.Client.Android/bin/Debug/net9.0-android/android-x86/publish/
+
    build-macos:
     runs-on: macos-latest
     defaults:
@@ -108,19 +154,13 @@ jobs:
       - name: Build VoiceCraft.Client.MacOS
         run: dotnet build -c Debug
 
-      - name: Upload Artifact VoiceCraft.Client.MacOS
+      - name: Publish VoiceCraft.Client.MacOS.x64
+        run: dotnet publish -c Debug -r osx-x64 --self-contained false
+      - name: Upload Artifact VoiceCraft.Client.MacOS.x64
         uses: actions/upload-artifact@v4
         with:
-          name: VoiceCraft.Client.MacOS
-          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/
-
-#      - name: Publish VoiceCraft.Client.MacOS.x64
-#        run: dotnet publish -c Debug -r osx-x64 --self-contained false
-#      - name: Upload Artifact VoiceCraft.Client.MacOS.x64
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: VoiceCraft.Client.MacOS.x64
-#          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/net9.0/osx-x64/publish/
+          name: VoiceCraft.Client.MacOS.x64
+          path: ./VoiceCraft.Client/VoiceCraft.Client.MacOS/bin/Debug/net9.0-macos/osx-x64/publish/
 
 
       - name: Install VoiceCraft.Client.iOS WorkLoads
@@ -131,13 +171,12 @@ jobs:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
         run: dotnet build -c Debug
 
-#      - name: Publish VoiceCraft.Client.iOS.x64
-#        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
-#        run: dotnet publish -c Debug -r ios-arm64 --self-contained false
+      - name: Publish VoiceCraft.Client.iOS.x64
+        working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
+        run: dotnet publish -c Debug -r ios-arm64 --self-contained false
       - name: Upload Artifact VoiceCraft.Client.iOS.x64
         uses: actions/upload-artifact@v4
         with:
           name: VoiceCraft.Client.iOS.x64
-          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/
-#          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/net9.0-windows/ios-arm64/publish/
+          path: ./VoiceCraft.Client/VoiceCraft.Client.iOS/bin/Debug/net9.0-ios/ios-arm64/publish/
 
