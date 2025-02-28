@@ -16,7 +16,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.x'
-          cache: true
 
       - name: Install VoiceCraft.Client.Windows WorkLoads
         run: dotnet workload restore
@@ -59,7 +58,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.x'
-          cache: true
 
       - name: Install VoiceCraft.Client.Linux WorkLoads
         run: dotnet workload restore
@@ -108,7 +106,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.x'
-          cache: true
 
       - name: Install VoiceCraft.Client.MacOS WorkLoads
         run: dotnet workload restore
