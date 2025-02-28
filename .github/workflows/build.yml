@@ -10,6 +10,7 @@ jobs:
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Windows
+    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup Dotnet
@@ -52,6 +53,7 @@ jobs:
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Linux
+    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup Dotnet
@@ -135,12 +137,12 @@ jobs:
           name: VoiceCraft.Client.Android.x86
           path: ./VoiceCraft.Client/VoiceCraft.Client.Android/bin/Debug/net9.0-android/android-x86/publish/
 
+
    build-macos:
     runs-on: macos-latest
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.MacOS
-    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup Dotnet
@@ -150,14 +152,18 @@ jobs:
 
       - name: Install VoiceCraft.Client.MacOS WorkLoads
         run: dotnet workload restore
+        if: false
 
       - name: Build VoiceCraft.Client.MacOS
         run: dotnet build -c Debug
+        if: false
 
       - name: Publish VoiceCraft.Client.MacOS.x64
         run: dotnet publish -c Debug -r osx-x64 --self-contained false
+        if: false
       - name: Upload Artifact VoiceCraft.Client.MacOS.x64
         uses: actions/upload-artifact@v4
+        if: false
         with:
           name: VoiceCraft.Client.MacOS.x64
           path: ./VoiceCraft.Client/VoiceCraft.Client.MacOS/bin/Debug/net9.0-macos/osx-x64/publish/
