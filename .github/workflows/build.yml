@@ -10,7 +10,6 @@ jobs:
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Windows
-    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup Dotnet
@@ -53,7 +52,6 @@ jobs:
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.Linux
-    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup Dotnet
@@ -152,7 +150,6 @@ jobs:
 
       - name: Install VoiceCraft.Client.MacOS WorkLoads
         run: dotnet workload restore
-        if: false
 
       - name: Build VoiceCraft.Client.MacOS
         run: dotnet build -c Debug
@@ -172,20 +169,23 @@ jobs:
       - name: Install xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '16.2'
+          xcode-version: latest-stable
 
       - name: Install VoiceCraft.Client.iOS WorkLoads
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
         run: dotnet workload restore
 
       - name: Build VoiceCraft.Client.iOS
+        if: false
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
         run: dotnet build -c Debug
 
       - name: Publish VoiceCraft.Client.iOS.x64
+        if: false
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.iOS
         run: dotnet publish -c Debug -r ios-arm64 --self-contained false
       - name: Upload Artifact VoiceCraft.Client.iOS.x64
+        if: false
         uses: actions/upload-artifact@v4
         with:
           name: VoiceCraft.Client.iOS.x64
