@@ -139,7 +139,7 @@ jobs:
 
 
    build-macos:
-    runs-on: macos-latest
+    runs-on: macos-15
     defaults:
       run:
         working-directory: ./VoiceCraft.Client/VoiceCraft.Client.MacOS
@@ -152,6 +152,7 @@ jobs:
 
       - name: Install VoiceCraft.Client.MacOS WorkLoads
         run: dotnet workload restore
+        if: false
 
       - name: Build VoiceCraft.Client.MacOS
         run: dotnet build -c Debug
